@@ -1,9 +1,9 @@
-const cacheName = "DefaultCompany-Nightshift Librarian WebGame-0.1";
+const cacheName = "MISTRAIN-Nightshift Librarian WebGame-0.1";
 const contentToCache = [
-    "Build/Build_ghPages.loader.js",
-    "Build/Build_ghPages.framework.js.gz",
-    "Build/Build_ghPages.data.gz",
-    "Build/Build_ghPages.wasm.gz",
+    "Build/Build.loader.js",
+    "Build/Build.framework.js",
+    "Build/Build.data",
+    "Build/Build.wasm",
     "TemplateData/style.css"
 
 ];
