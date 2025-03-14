@@ -1,0 +1,4 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/NL_Level/UI/NewUSSFile.uss?fileID=7433441132597879392&amp;guid=1cc04891d35fe8042bfb4815c13ce6da&amp;type=3#NewUSSFile" />
+    <engine:Label text="Hit F11 for fullscreen..." name="hitF11Label" style="bottom: 10px; left: 10px; color: rgb(0, 0, 0); top: 93%;" />
+</engine:UXML>
