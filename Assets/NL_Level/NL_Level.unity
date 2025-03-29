@@ -9145,7 +9145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39984d75e93d7c45983f7b96d818855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: This is a subtitle!
+  interactText: This is a statue...
 --- !u!65 &406171514
 BoxCollider:
   m_ObjectHideFlags: 0
