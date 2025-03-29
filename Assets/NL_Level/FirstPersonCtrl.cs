@@ -10,6 +10,10 @@ public class FirstPersonController : MonoBehaviour
 
     private CharacterController characterController;
 
+    // Gravity settings
+    public float gravity = -9.8f;  // Default gravity
+    private Vector3 velocity; // For gravity
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -31,10 +35,20 @@ public class FirstPersonController : MonoBehaviour
         float forwardSpeed = Input.GetAxis("Vertical") * speed;
         float sideSpeed = Input.GetAxis("Horizontal") * speed;
 
-        Vector3 speedVector = new Vector3(sideSpeed, 0, forwardSpeed);
+        Vector3 speedVector = new Vector3(sideSpeed, velocity.y, forwardSpeed);
         speedVector = transform.rotation * speedVector;
 
+        // Apply gravity
+        if (characterController.isGrounded)
+        {
+            velocity.y = -2f; // Small value to keep the player grounded
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime; // Apply gravity
+        }
+
+        // Move the character
         characterController.Move(speedVector * Time.deltaTime);
     }
 }
-
