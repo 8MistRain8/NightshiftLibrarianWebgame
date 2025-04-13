@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/NL_Level/NL_Level.unity
+    path: Assets/NL_Level/Level/NL_Level.unity
     guid: 9c2601c8318bb75429e511b3a113381a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
