@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorResolution: 500
-    - _DitherSpread: 0.01
+    - _DitherSpread: 0.001
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
