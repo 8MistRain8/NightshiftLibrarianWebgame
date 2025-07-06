@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 23835a4167b89fc4b804deeba7e8e50b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -75,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 23835a4167b89fc4b804deeba7e8e50b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
@@ -95,7 +95,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 23835a4167b89fc4b804deeba7e8e50b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -313,7 +313,7 @@ Material:
     - _Color: {r: 0.8159487, g: 0.8807405, b: 0.9056604, a: 0.64705884}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 0.35644355, g: 0.67288196, b: 0.8490566, a: 1}
+    - _EmissionColor: {r: 0.9764151, g: 0.9915768, b: 1, a: 1}
     - _EmissiveColor: {r: 56001.93, g: 56001.93, b: 56001.93, a: 100000}
     - _EmissiveColorLDR: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
