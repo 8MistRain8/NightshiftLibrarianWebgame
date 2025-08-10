@@ -1,9 +1,9 @@
 const cacheName = "MISTRAIN-Nightshift Librarian WebGame-0.1";
 const contentToCache = [
-    "Build/5.0.loader.js",
-    "Build/5.0.framework.js",
-    "Build/5.0.data",
-    "Build/5.0.wasm",
+    "Build/12.loader.js",
+    "Build/12.framework.js",
+    "Build/12.data",
+    "Build/12.wasm",
     "TemplateData/style.css"
 
 ];
