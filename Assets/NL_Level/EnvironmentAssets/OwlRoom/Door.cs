@@ -5,6 +5,7 @@ public class Door : MonoBehaviour
     public GameObject closedDoor;
     public GameObject openDoor;
 
+    // Open the door (call this whenever you want)
     public void OpenDoor()
     {
         if (closedDoor != null)
@@ -12,5 +13,15 @@ public class Door : MonoBehaviour
 
         if (openDoor != null)
             openDoor.SetActive(true);
+    }
+
+    // Close the door
+    public void CloseDoor()
+    {
+        if (closedDoor != null)
+            closedDoor.SetActive(true);
+
+        if (openDoor != null)
+            openDoor.SetActive(false);
     }
 }
