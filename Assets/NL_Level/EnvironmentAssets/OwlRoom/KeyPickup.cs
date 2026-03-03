@@ -1,13 +1,20 @@
 using UnityEngine;
+
 public class KeyPickup : MonoBehaviour
 {
-    public Door door;        // drag your Door here in inspector
+    public Door door;                   // drag your Door here
+    public VideoTrigger[] triggersToEnable; // drag your two VideoTrigger areas here
+
     private AudioSource audioSource;
     private bool pickedUp = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        // Make sure triggers start disabled
+        foreach (var trigger in triggersToEnable)
+            trigger.SetActiveTrigger(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -22,10 +29,14 @@ public class KeyPickup : MonoBehaviour
 
             door.OpenDoor();
 
-            // hide the key visually
+            // Enable the video triggers
+            foreach (var trigger in triggersToEnable)
+                trigger.SetActiveTrigger(true);
+
+            // Hide the key visually
             GetComponent<MeshRenderer>().enabled = false;
 
-            // destroy after sound finishes
+            // Destroy after sound finishes
             Destroy(gameObject, audioSource.clip.length);
         }
     }
