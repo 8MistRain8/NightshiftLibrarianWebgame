@@ -5813,6 +5813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160488973}
   - component: {fileID: 160488974}
+  - component: {fileID: 160488975}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -5847,6 +5848,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e382cc54de9763b4399b0797ceb545d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &160488975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160488972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0455ce4677a9348a3b9cc83cd9a490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 2134811196}
 --- !u!1001 &164614613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10696,10 +10710,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2017990595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -31.579971}
-  m_SizeDelta: {x: 0, y: 973.24005}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307864192
 MonoBehaviour:
@@ -70041,10 +70055,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -73289,7 +73303,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134811195}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: f45cc158b7d465a4e8dbe3b34f3ec157, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 8c9edfae7e42c254baab5097625c4665, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
