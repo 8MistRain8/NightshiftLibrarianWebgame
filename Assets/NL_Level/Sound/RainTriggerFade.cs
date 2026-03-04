@@ -7,35 +7,60 @@ public class RainTriggerFade : MonoBehaviour
     public float fadeDuration = 2f;
     public float maxVolume = 0.7f;
 
+    private static int activeZones = 0;
+    private static Coroutine fadeRoutine;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        activeZones++;
+
+        if (!rainAudio.isPlaying)
         {
-            if (!rainAudio.isPlaying)
-                rainAudio.Play();
-            StartCoroutine(FadeAudio(rainAudio, 0f, maxVolume, fadeDuration));
+            rainAudio.volume = 0f;
+            rainAudio.Play();
         }
+
+        StartFade(maxVolume);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        activeZones--;
+
+        if (activeZones <= 0)
         {
-            StartCoroutine(FadeAudio(rainAudio, rainAudio.volume, 0f, fadeDuration, stopAfterFade: true));
+            activeZones = 0;
+            StartFade(0f, stopAfter: true);
         }
     }
 
-    private IEnumerator FadeAudio(AudioSource source, float from, float to, float duration, bool stopAfterFade = false)
+    void StartFade(float target, bool stopAfter = false)
     {
-        float t = 0f;
-        while (t < duration)
+        if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeAudio(target, stopAfter));
+    }
+
+    IEnumerator FadeAudio(float target, bool stopAfter)
+    {
+        float start = rainAudio.volume;
+        float time = 0f;
+
+        while (time < fadeDuration)
         {
-            t += Time.deltaTime;
-            source.volume = Mathf.Lerp(from, to, t / duration);
+            time += Time.deltaTime;
+            rainAudio.volume = Mathf.Lerp(start, target, time / fadeDuration);
             yield return null;
         }
-        source.volume = to;
-        if (stopAfterFade)
-            source.Stop();
+
+        rainAudio.volume = target;
+
+        if (stopAfter && target == 0f)
+            rainAudio.Stop();
     }
 }

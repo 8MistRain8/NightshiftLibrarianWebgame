@@ -9,8 +9,11 @@ public class AudioManager : MonoBehaviour
     private AudioSource nextSource;
 
     [Header("Crossfade Settings")]
-    public float fadeInDuration = 1f;   // fast fade-in
-    public float fadeOutDuration = 5f;  // slow fade-out
+    public float fadeInDuration = 1f;
+    public float fadeOutDuration = 5f;
+
+    [Range(0f, 1f)]
+    public float musicMaxVolume = 0.6f; // << THIS controls peak volume
 
     private Coroutine fadeCoroutineCurrent;
     private Coroutine fadeCoroutineNext;
@@ -24,14 +27,13 @@ public class AudioManager : MonoBehaviour
 
         currentSource = gameObject.AddComponent<AudioSource>();
         currentSource.loop = true;
+        currentSource.volume = 0f;
 
         nextSource = gameObject.AddComponent<AudioSource>();
         nextSource.loop = true;
+        nextSource.volume = 0f;
     }
 
-    /// <summary>
-    /// Play a music clip with fast fade-in
-    /// </summary>
     public void PlayMusic(AudioClip clip)
     {
         if (clip == null) return;
@@ -45,35 +47,33 @@ public class AudioManager : MonoBehaviour
     private IEnumerator CrossfadeMusic(AudioClip newClip)
     {
         if (currentSource.clip == newClip)
-        {
-            currentSource.Stop(); // restart if same clip
-        }
+            yield break; // no restart if same clip
 
         nextSource.clip = newClip;
         nextSource.volume = 0f;
         nextSource.Play();
 
-        fadeCoroutineCurrent = StartCoroutine(FadeVolume(currentSource, currentSource.volume, 0f, fadeOutDuration)); // slow fade-out
-        fadeCoroutineNext = StartCoroutine(FadeVolume(nextSource, 0f, 1f, fadeInDuration)); // fast fade-in
+        fadeCoroutineCurrent = StartCoroutine(FadeVolume(currentSource, currentSource.volume, 0f, fadeOutDuration));
+        fadeCoroutineNext = StartCoroutine(FadeVolume(nextSource, 0f, musicMaxVolume, fadeInDuration));
 
         yield return new WaitForSeconds(Mathf.Max(fadeInDuration, fadeOutDuration));
 
-        // Swap sources
         AudioSource temp = currentSource;
         currentSource = nextSource;
         nextSource = temp;
 
         nextSource.Stop();
+        nextSource.clip = null;
+
         fadeCoroutineCurrent = null;
         fadeCoroutineNext = null;
     }
 
-    /// <summary>
-    /// Stop music with slow fade-out
-    /// </summary>
     public void StopMusic()
     {
-        if (fadeCoroutineCurrent != null) StopCoroutine(fadeCoroutineCurrent);
+        if (fadeCoroutineCurrent != null)
+            StopCoroutine(fadeCoroutineCurrent);
+
         fadeCoroutineCurrent = StartCoroutine(FadeOut(currentSource, fadeOutDuration));
     }
 
@@ -84,14 +84,12 @@ public class AudioManager : MonoBehaviour
         yield return FadeVolume(source, source.volume, 0f, duration);
 
         source.Stop();
-        source.volume = 1f;
+        source.volume = 0f; // << do NOT reset to 1
         source.clip = null;
+
         fadeCoroutineCurrent = null;
     }
 
-    /// <summary>
-    /// Smoothly interpolate volume using SmoothStep
-    /// </summary>
     private IEnumerator FadeVolume(AudioSource source, float from, float to, float duration)
     {
         float t = 0f;
@@ -106,9 +104,6 @@ public class AudioManager : MonoBehaviour
         source.volume = to;
     }
 
-    /// <summary>
-    /// Returns the AudioSource currently playing music (for random volume modulation)
-    /// </summary>
     public AudioSource GetCurrentSource()
     {
         return currentSource;
